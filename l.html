@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="loginStyle.css">
+  <script src="login.js" defer></script>
+  <title>Login / Register</title>
+</head>
+<body>
+  <div class="form-box">
+    <div class="button-box">
+      <button type="button" class="toggle-btn" id="log" onclick="login()">Log In</button>
+      <button type="button" class="toggle-btn" id="reg" onclick="register()">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login" class="input-group" onsubmit="handleLogin(event)">
+      <input type="text" id="email" class="input-field" placeholder="Username or Phone Number" required>
+      <input type="password" id="password" class="input-field" placeholder="Password" required>
+      <button type="submit" class="submit-btn">Log In</button>
+    </form>
+
+    <!-- Registration Form -->
+    <form id="register" class="input-group" onsubmit="handleRegister(event)">
+      <input type="text" class="input-field" placeholder="Full Name" required>
+      <input type="email" class="input-field" placeholder="Email Address" required>
+      <input type="password" class="input-field" placeholder="Create Password" name="psame" required>
+      <input type="password" class="input-field" placeholder="Confirm Password" name="psame" required>
+      <button type="submit" class="submit-btn reg-btn">Register</button>
+    </form>
+  </div>
+</body>
+</html>

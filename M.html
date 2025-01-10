@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Bootcamp Form</title>
+</head>
+<body>
+    <h2>Enroll in the Python Bootcamp</h2>
+    <form id="bootcampForm" action="https://formsubmit.co/mohanapriyapri1997@gmail.com" method="POST" target="_blank">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+       
+
+        <button type="submit">Send</button>
+    </form>
+
+    <p id="confirmationMessage" style="display:none; color:green; font-weight:bold;"></p>
+
+    <script>
+        document.getElementById("bootcampForm").addEventListener("submit", function(event) {
+            setTimeout(() => {
+                // Extract user data
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+
+                // Show congratulatory message
+                const confirmationMessage = document.getElementById("confirmationMessage");
+                confirmationMessage.style.display = "block";
+                confirmationMessage.textContent = `Congratulations, ${name}! You have lifetime access to the Python Bootcamp course. Details have been sent to ${email}.`;
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

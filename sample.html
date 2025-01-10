@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Enrollment - Backend Python</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin: 30px;
+        }
+
+        /* Left: Syllabus Section */
+        .syllabus {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .syllabus h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .syllabus ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .syllabus li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .topic-btn {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .topic-btn:hover {
+            background-color: #005f6a;
+        }
+
+        .completed .topic-btn {
+            background-color: #8BC34A;
+        }
+
+        .topic-btn i {
+            margin-right: 10px;
+        }
+
+        .tick-box {
+            display: none;
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .topic-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* Right: Video Section */
+        .video-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            height: 15px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #4CAF50;
+            border-radius: 8px;
+        }
+
+        /* Progress Percentage */
+        .progress-percentage {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Certificate Download Button */
+        #download-btn {
+            display: none;
+            padding: 10px 20px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        #download-btn:hover {
+            background-color: #fb8c00;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <!-- Left: Syllabus Topics -->
+        <div class="syllabus">
+            <h2>Course Syllabus</h2>
+            <ul>
+                <li>
+                    <div class="topic-content">
+                        <div id="tick-box-1" class="tick-box"><i class="fas fa-check"></i></div>
+                        <button class="topic-btn" id="topic-1" onclick="showVideo(1)"><i class="fas fa-video"></i> Overview of Python</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="topic-content">
+                        <div id="tick-box-2" class="tick-box"><i class="fas fa-check"></i></div>
+                        <button class="topic-btn" id="topic-2" onclick="showVideo(2)"><i class="fas fa-video"></i> Understanding Functions</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="topic-content">
+                        <div id="tick-box-3" class="tick-box"><i class="fas fa-check"></i></div>
+                        <button class="topic-btn" id="topic-3" onclick="showVideo(3)"><i class="fas fa-video"></i> Loops in Python</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="topic-content">
+                        <div id="tick-box-4" class="tick-box"><i class="fas fa-check"></i></div>
+                        <button class="topic-btn" id="topic-4" onclick="showVideo(4)"><i class="fas fa-video"></i> Conditionals in Python</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="topic-content">
+                        <div id="tick-box-5" class="tick-box"><i class="fas fa-check"></i></div>
+                        <button class="topic-btn" id="topic-5" onclick="showVideo(5)"><i class="fas fa-video"></i> Introduction to NumPy</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Right: Video Section -->
+        <div class="video-container">
+            <h2>Demo Videos</h2>
+            <video id="video-player" controls>
+                <source id="video-source" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <div class="progress-percentage" id="progress-percentage">Progress: 0%</div>
+
+            <!-- Download Button -->
+            <button id="download-btn" onclick="goToCertificatePage()">Download Certificate</button>
+        </div>
+    </div>
+
+    <script>
+        let completedVideos = 0;
+        const totalVideos = 5; // Total number of topics
+        let videoDurations = [0, 0, 0, 0, 0];  // Store video durations in seconds
+        let videoTimesPlayed = [0, 0, 0, 0, 0];  // Store time played for each video
+        const progressBar = document.getElementById("progress-bar");
+        const progressPercentage = document.getElementById("progress-percentage");
+
+        // Set the video source and play the video
+        function showVideo(videoIndex) {
+            const videoPlayer = document.getElementById("video-player");
+            const videoSource = document.getElementById("video-source");
+            const tickBox = document.getElementById(`tick-box-${videoIndex}`);
+            const videoButton = document.getElementById(`topic-${videoIndex}`);
+
+            // Set video paths
+            const videoPaths = [
+                './videos/video1.mp4', // Topic 1 & 2
+                './videos/video2.mp4', // Topic 3 & 4
+                './videos/video2.mp4', // Topic 5
+            ];
+
+            // Update video source and play the video
+            videoSource.src = videoPaths[videoIndex - 1];
+            videoPlayer.load();
+            videoPlayer.play();
+
+            // Change background color when clicked
+            videoButton.classList.add("completed");
+
+            // Start tracking the video progress
+            videoPlayer.ontimeupdate = function() {
+                // Get the duration of the video
+                if (videoDurations[videoIndex - 1] === 0) {
+                    videoDurations[videoIndex - 1] = videoPlayer.duration;
+                }
+                
+                // Calculate the percentage of the video watched
+                const percentageWatched = (videoPlayer.currentTime / videoDurations[videoIndex - 1]) * 100;
+                
+                // Update progress bar for the specific video
+                if (videoTimesPlayed[videoIndex - 1] < percentageWatched) {
+                    videoTimesPlayed[videoIndex - 1] = percentageWatched;
+                    updateTotalProgress();
+                }
+
+                // When video ends, mark it as completed and show the green checkmark
+                if (videoPlayer.currentTime === videoPlayer.duration) {
+                    tickBox.style.display = "inline";  // Show the checkmark inside the green box
+                    completedVideos++;
+                    updateTotalProgress();
+                }
+            };
+        }
+
+        // Update the overall progress
+        function updateTotalProgress() {
+            const progress = (completedVideos / totalVideos) * 100;
+            progressBar.style.width = progress + "%";
+            progressPercentage.innerHTML = "Progress: " + Math.round(progress) + "%";
+
+            // Show certificate download button when all videos are completed
+            if (completedVideos === totalVideos) {
+                document.getElementById("download-btn").style.display = "block";
+            }
+        }
+
+        // Navigate to certificate page when the button is clicked
+        function goToCertificatePage() {
+            window.location.href = "certificate.html"; // Replace with your certificate page URL
+        }
+    </script>
+</body>
+</html>

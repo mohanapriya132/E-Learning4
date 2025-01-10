@@ -1,0 +1,142 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');/* General Styles */
+ /* General Styles */
+
+body {
+    /* font-family: 'Poppins', sans-serif; */
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+section {
+    padding: 2rem;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #444;
+    /* font-family: 'Poppins', sans-serif; */
+}
+
+/* Grid Container */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+}
+
+/* Card Design */
+.card {
+    background: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    /* box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); */
+    border-color: #0077ff;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+section{
+    margin-top: 6rem;
+}
+.title{
+    color: linear-gradient(to right, #FA4B37, #DF2771);
+}
+
+
+.card-content {
+    padding: 1rem;
+    text-align: left;
+    height: 15rem;
+}
+
+.card-content h3 {
+    font-size: 1.6rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-content p {
+    margin: 0.5rem 0;
+    color: #666;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card-content .info {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.card-content .price {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.card-content .price span {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+}
+
+.card-content small {
+    color: #e63946;
+    font-weight: bold;
+}
+
+.enroll {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    /* background: linear-gradient(45deg, #0077ff, #00d4ff); */
+    background: linear-gradient(to right, #FA4B37, #DF2771);
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.enroll:hover {
+    background: linear-gradient(45deg, #0055cc, #0099cc);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 2rem;
+    }
+
+    .card-content h3 {
+        font-size: 1.3rem;
+    }
+
+    .card-content p {
+        font-size: 0.9rem;
+    }
+
+    .card-content .price {
+        font-size: 1rem;
+    }
+}
+

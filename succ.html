@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Enrollment - Backend Python</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="sample.css">
+    <link rel="stylesheet" href="success.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    top: 0;
+    position: fixed;
+    display: flex;
+    width: 100%;
+    z-index: 1000;
+    background: #fff;
+    justify-content: space-around;
+    transition: 1.5s;
+    align-items: center;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.nav-menu {
+    display: flex;
+    align-items: center;
+}
+.nav-menu li {
+    list-style: none;
+    margin: 5px 10px;
+}
+.nav-menu li a {
+    padding: 2px 10px;
+    color: #2e2e2e;
+    cursor: pointer;
+    transition: 0.5s;
+    text-decoration: none;
+}
+.nav-menu li a:hover {
+    color: #fff;
+    border-radius: 5px;
+    background: #DF2771;
+}
+.nav-logo img {
+    width: 120px;
+    cursor: pointer;
+    transition: all 1s;
+}
+.logo-text {
+    margin-top: -13px;
+    font-weight: bold;
+    font-size: 10px;
+    margin-left: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.nav-search {
+    padding: 2px 10px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid;
+    border-radius: 20px;
+}
+.nav-search img {
+    width: 25px;
+    cursor: pointer;
+}
+.search-input {
+    outline: none;
+    border: none;
+    background: transparent;
+}
+.nav-login {
+    margin-left: 50px;
+    padding: 5px 20px;
+    border: 2px solid #DF2771;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: 0.5s;
+    background-color: #DF2771;
+    color: #fff;
+}
+.nav-login:hover {
+    color: #2e2e2e;
+    background: #fff;
+}
+.nav-menu-icon {
+    width: 25px;
+    cursor: pointer;
+}
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin: 30px;
+        }
+
+        /* Left: Syllabus Section */
+        .syllabus {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .syllabus h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .syllabus ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .syllabus li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .topic-btn {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .topic-btn:hover {
+            background-color: #005f6a;
+        }
+
+        .completed .topic-btn {
+            background-color: #8BC34A;
+        }
+
+        .topic-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .tick-box {
+            display: none;
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        .subtitle-btn {
+            background-color: transparent;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #333;
+            text-align: left;
+        }
+
+        /* Right: Video Section */
+        .video-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            height: 15px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #4CAF50;
+            border-radius: 8px;
+        }
+
+        /* Progress Percentage */
+        .progress-percentage {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Certificate Download Button */
+        #download-btn {
+            display: none;
+            padding: 10px 20px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        #download-btn:hover {
+            background-color: #fb8c00;
+        }
+        footer {
+	color: #E5E8EF;
+	background: #000D;
+	padding: 50px 0; 
+}
+footer .footer-container {
+	max-width: 1300px;
+	margin: auto;
+	padding: 0 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap-reverse;
+}
+footer .social-media img{
+	width: 22px;
+}
+footer .logo {
+	width: 180px;
+	color: #fff;
+}
+footer .social-media a{
+	margin-right: 10px;
+	font-size: 22px;
+	text-decoration: none;
+}
+footer .right-col h1{
+	font-size: 26px;
+}
+footer .border{
+	width: 100px;
+	height: 4px;
+	background: linear-gradient(to right, #FA4B37, #DF2771);
+	margin: 2px;
+}
+footer .newsletter-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+footer input::placeholder {
+  color: white !important;
+}
+footer .txtb {
+	flex: 1;
+	padding: 18px 40px;
+	font-size: 16px;
+	background: #343A40;
+	border: none;
+	font-weight: 700;
+	outline: none;
+	border-radius: 5px;
+	min-width: 260px;
+	margin-top: 20px;
+	color: white;
+}
+footer .btn {
+	margin-top: 20px;
+	padding: 18px 40px;
+	font-size: 16px;
+	color: #f1f1f1;
+	background: linear-gradient(to right, #FA4B37, #DF2771);
+	border: none;
+	font-weight: 700;
+	outline: none;
+	border-radius: 5px;
+	margin-left: 20px;
+	cursor: pointer;
+	transition: opacity .3s linear;	
+}
+footer .btn:hover {
+	opacity: .7;
+}
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">
+            <div class="nav-logo">
+                <img src="./images/icon/logo-logo.png" alt="logo">
+                <p class="logo-text">Digital Academy</p>
+            </div>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="Course.html">Courses</a></li>
+            <li><a href="index.html">Services</a></li>
+            <li><a href="index.html">Contact</a></li>
+        </ul>
+        <div class="nav-search">
+            <input type="text" class="search-input" placeholder="Search here...">
+            <img src="images/icon/search.png" alt="search" onclick="slide()">
+        </div>
+        <a class="nav-login" href="login.html">Login</a>
+        <img src="images/icon/menu.png" class="nav-menu-icon" onclick="sideMenu(0)" alt="menu">
+    </nav>
+
+   
+    <div class="course-container" style="margin-top: 8rem;">
+        <!-- Welcome Message Section -->
+        <div class="welcome-message">
+          <h2 style="color: green;">Welcome to Vetri Digital Academy</h2>
+          <p style="font-weight: bold; margin-top: 5px;">
+            We're thrilled to have you with us! Our courses are designed to provide you with the best learning experience.
+            Dive into the world of knowledge and skill-building.
+          </p>
+        </div>
+      
+        <!-- Explore Course Section -->
+        <div class="explore-course">
+          <h2>Explore the Course</h2>
+          <p>
+            Get full access to the course materials, video lessons, and quizzes to enhance your learning experience.
+          </p>
+          <!-- <button class="download-btn" onclick="downloadSyllabus()">Download Syllabus</button> -->
+        </div>
+      </div>
+
+    <div class="main-content">
+        <!-- Left: Syllabus Topics -->
+        <div class="syllabus">
+            <h2>Course Syllabus</h2>
+            <ul>
+                <!-- Topic 1 -->
+                <li>
+                    <div class="topic-content">
+                        <button class="topic-btn" id="topic-1"><i class="fas fa-video"></i> Overview of Python</button>
+                    </div>
+                    <ul>
+                        <li>
+                            <button class="subtitle-btn" id="sub-1" onclick="showVideo(1)">Setting up Python Environment</button>
+                            <div id="tick-box-1" class="tick-box"><i class="fas fa-check"></i></div>
+                        </li>
+                        <li>
+                            <button class="subtitle-btn" id="sub-2" onclick="showVideo(2)">Basic Syntax and Variables</button>
+                            <div id="tick-box-2" class="tick-box"><i class="fas fa-check"></i></div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Topic 2 -->
+                <li>
+                    <div class="topic-content">
+                        <button class="topic-btn" id="topic-2"><i class="fas fa-video"></i> Understanding Functions</button>
+                    </div>
+                    <ul>
+                        <li>
+                            <button class="subtitle-btn" id="sub-3" onclick="showVideo(3)">Defining Functions</button>
+                            <div id="tick-box-3" class="tick-box"><i class="fas fa-check"></i></div>
+                        </li>
+                        <li>
+                            <button class="subtitle-btn" id="sub-4" onclick="showVideo(4)">Function Parameters and Return</button>
+                            <div id="tick-box-4" class="tick-box"><i class="fas fa-check"></i></div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Topic 3 -->
+                <li>
+                    <div class="topic-content">
+                        <button class="topic-btn" id="topic-3"><i class="fas fa-video"></i> Loops in Python</button>
+                    </div>
+                    <ul>
+                        <li>
+                            <button class="subtitle-btn" id="sub-5" onclick="showVideo(5)">For Loops</button>
+                            <div id="tick-box-5" class="tick-box"><i class="fas fa-check"></i></div>
+                        </li>
+                        <li>
+                            <button class="subtitle-btn" id="sub-6" onclick="showVideo(6)">While Loops</button>
+                            <div id="tick-box-6" class="tick-box"><i class="fas fa-check"></i></div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Topic 4 -->
+                <li>
+                    <div class="topic-content">
+                        <button class="topic-btn" id="topic-4"><i class="fas fa-video"></i> Conditionals in Python</button>
+                    </div>
+                    <ul>
+                        <li>
+                            <button class="subtitle-btn" id="sub-7" onclick="showVideo(7)">If-Else Statements</button>
+                            <div id="tick-box-7" class="tick-box"><i class="fas fa-check"></i></div>
+                        </li>
+                        <li>
+                            <button class="subtitle-btn" id="sub-8" onclick="showVideo(8)">Nested Conditionals</button>
+                            <div id="tick-box-8" class="tick-box"><i class="fas fa-check"></i></div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Topic 5 -->
+                <li>
+                    <div class="topic-content">
+                        <button class="topic-btn" id="topic-5"><i class="fas fa-video"></i> Introduction to NumPy</button>
+                    </div>
+                    <ul>
+                        <li>
+                            <button class="subtitle-btn" id="sub-9" onclick="showVideo(9)">Creating NumPy Arrays</button>
+                            <div id="tick-box-9" class="tick-box"><i class="fas fa-check"></i></div>
+                        </li>
+                        <li>
+                            <button class="subtitle-btn" id="sub-10" onclick="showVideo(10)">Array Operations</button>
+                            <div id="tick-box-10" class="tick-box"><i class="fas fa-check"></i></div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Right: Video Section -->
+        <div class="video-container">
+            <h2>Python Videos</h2>
+            <video id="video-player" controls>
+                <source id="video-source" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <div class="progress-percentage" id="progress-percentage">Progress: 0%</div>
+
+            <!-- Download Button -->
+            <button id="download-btn" onclick="goToCertificatePage()">Download Certificate</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="left-col">
+                <!-- <img src="images/icon/logo - Copy.png" style="width: 200px;"> -->
+                <h1 style="color: #fff; margin-bottom: 10px;">Vetri</h1>
+                <div class="logo"></div>
+                <div class="social-media">
+                    <a href="#"><img src="images/icon\fb.png"></a>
+                    <a href="#"><img src="images/icon\insta.png"></a>
+                    <a href="#"><img src="images/icon\tt.png"></a>
+                    <a href="#"><img src="images/icon\ytube.png"></a>
+                    <a href="#"><img src="images/icon\linkedin.png"></a>
+                </div><br><br>
+                <p class="rights-text">Copyright © 2024 Created By xxx, xxx All Rights Reserved.</p>
+                <br><p><img src="images/icon/location.png"> Lovely Professional University<br>xxx, xxx-144401</p><br>
+                <p><img src="images/icon/phone.png"> +91-1234-567-890<br><img src="images/icon/mail.png">&nbsp; abc@gmail.com</p>
+            </div>
+            <div class="right-col">
+                <h1 style="color: #fff">Our Newsletter</h1>
+                <div class="border"></div><br>
+                <p>Enter Your Email to get our News and updates.</p>
+                <form class="newsletter-form">
+                    <input class="txtb" type="email" placeholder="Enter Your Email">
+                    <input class="btn" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let completedVideos = 0;
+        const totalVideos = 10; // Total subtitles (topics and subtopics combined)
+        const progressBar = document.getElementById('progress-bar');
+        const progressPercentage = document.getElementById('progress-percentage');
+        const downloadBtn = document.getElementById('download-btn');
+
+        // Video path setup
+        const videoPaths = [
+            'videos/video1.mp4', // Path for Video 1
+            'videos/video2.mp4', // Path for Video 2
+            'videos/video1.mp4', // Path for Video 3
+            'videos/video2.mp4', // Path for Video 4
+            'videos/video1.mp4', // Path for Video 5
+            'videos/video2.mp4', // Path for Video 6
+            'videos/video1.mp4', // Path for Video 7
+            'videos/video2.mp4', // Path for Video 8
+            'videos/video1.mp4', // Path for Video 9
+            'videos/video2.mp4'  // Path for Video 10
+        ];
+
+        function showVideo(subTitleIndex) {
+            const videoPlayer = document.getElementById('video-player');
+            const videoSource = document.getElementById('video-source');
+            const tickBox = document.getElementById(`tick-box-${subTitleIndex}`);
+
+            // Set video source based on clicked subtitle
+            videoSource.src = videoPaths[subTitleIndex - 1];
+            videoPlayer.load();
+            videoPlayer.play();
+
+            // Show tick box when video is completed
+            videoPlayer.onended = function() {
+                tickBox.style.display = 'inline-block';
+                updateProgress();
+            };
+        }
+
+        function updateProgress() {
+            completedVideos++;
+            let progress = Math.floor((completedVideos / totalVideos) * 100);
+            progressBar.style.width = progress + '%';
+            progressPercentage.textContent = 'Progress: ' + progress + '%';
+            if (completedVideos === totalVideos) {
+                downloadBtn.style.display = 'block';
+            }
+        }
+
+        function goToCertificatePage() {
+            window.location.href = 'certificate.html'; // Redirect to certificate page
+        }
+    </script>
+</body>
+</html>

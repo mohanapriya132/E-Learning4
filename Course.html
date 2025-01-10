@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="shortcut icon" type="png" href="images/icon/favicon.png">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Comaptible" content="IE=edge">
+        <title>LearnEd</title>
+        <meta name="desciption" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+       <!-- CSS Link -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cour.css"/>
+     <!-- Font Awesome CDN -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <script type="text/javascript" src="script.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script>
+            $(window).on('scroll', function(){
+                  if($(window).scrollTop()){
+                    $('nav').addClass('black');
+                  }else {
+                $('nav').removeClass('black');
+              }
+            })
+        </script>
+    </head>
+  
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+	
+		<nav>
+			<a href="index.html"><div class="logo"><img src="./images/icon/logo-logo.png" alt="logo">
+				<p style="margin-top: -13px; font-weight: bold; font-size: 10px;margin-left: 30px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Digital Academy</p>
+			</div></a>
+			<ul>
+				<!-- <li><a class="active" href="">Home</a></li> -->
+				<li><a href="Course.html">Courses</a></li>
+				
+				<li><a href="index.html">Services</a></li>
+				<li><a href="index.html">Contact</a></li>
+			</ul>
+			<!-- <div class="srch"><input type="text" class="search" placeholder="Search here..."><img src="./images/icon/search.png" alt="search" onclick=slide()></div> -->
+            <div class="srch">
+                <input type="text" id="search" class="search" placeholder="Search here..." onkeyup="filterCourses()">
+                <img src="./images/icon/search.png" alt="search">
+              </div>
+			<a class="get-started" href="login.html">Login</a>
+			<img src="images/icon/menu.png" class="menu" onclick="sideMenu(0)" alt="menu">
+		</nav>
+
+        <section>
+
+        <h2 class="title">All Courses</h2>
+        <div class="grid-container">
+            <!-- Card 1 -->
+            <div class="grid-item">
+                
+                <div class="card">
+                    <img src="./course_img/img1.jpg" alt="Course Image">
+                    <div class="card-content">
+                        <h3>Python Bootcamp in 2024 (Beginner)</h3>
+                        <p>by Eichiro D. Lucky</p>
+                        <p class="info"><i class="fa fa-clock"></i> 8hr 39min &bull; 18 classes</p>
+                        <p class="price">Rs.499 <span>Rs.999</span> <small>20% OFF</small></p>
+                        <a href="Product.html" class="enroll">Enroll</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 -->
+            <div class="grid-item">
+                <div class="card">
+                    <img src="./course_img/img2.jpg" alt="Course Image">
+                    <div class="card-content">
+                        <h3>JavaScript Essentials</h3>
+                        <p>by Maria K. Smith</p>
+                        <p class="info"><i class="fa fa-clock"></i> 6hr 20min &bull; 15 classes</p>
+                        <p class="price">Rs.699 <span>Rs.1399</span> <small>50% OFF</small></p>
+                        <a href="#" class="enroll">Enroll</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="grid-item">
+                <div class="card">
+                    <img src="./course_img/img3.jpg" alt="Course Image">
+                    <div class="card-content">
+                        <h3>Web Development Bootcamp</h3>
+                        <p>by Alex J. Cooper</p>
+                        <p class="info"><i class="fa fa-clock"></i> 12hr 45min &bull; 24 classes</p>
+                        <p class="price">Rs.799 <span>Rs.1599</span> <small>50% OFF</small></p>
+                        <a href="#" class="enroll">Enroll</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4 -->
+            <div class="grid-item">
+                <div class="card">
+                    <img src="./course_img/img4.jpg" alt="Course Image">
+                    <div class="card-content">
+                        <h3>Data Science Fundamentals</h3>
+                        <p>by Claire D. Evans</p>
+                        <p class="info"><i class="fa fa-clock"></i> 10hr 30min &bull; 20 classes</p>
+                        <p class="price">Rs.999 <span>Rs.1999</span> <small>50% OFF</small></p>
+                        <a href="#" class="enroll">Enroll</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 5 -->
+            <div class="grid-item">
+                <div class="card">
+                    <img src="./course_img/img5.jpg" alt="Course Image">
+                    <div class="card-content">
+                        <h3>ReactJS for Beginners</h3>
+                        <p>by Emily T. Brown</p>
+                        <p class="info"><i class="fa fa-clock"></i> 7hr 15min &bull; 16 classes</p>
+                        <p class="price">Rs.599 <span>Rs.1199</span> <small>50% OFF</small></p>
+                        <a href="#" class="enroll">Enroll</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 6 -->
+            <div class="grid-item">
+                <div class="card">
+                    <img src="./course_img/img6.jpg" alt="Course Image">
+                    <div class="card-content">
+                        <h3>Full-Stack Development</h3>
+                        <p>by John W. Doe</p>
+                        <p class="info"><i class="fa fa-clock"></i> 15hr &bull; 30 classes</p>
+                        <p class="price">Rs.1499 <span>Rs.2999</span> <small>50% OFF</small></p>
+                        <a href="#" class="enroll">Enroll</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 7 -->
+            <div class="grid-item">
+                <div class="card">
+                    <img src="./course_img/img7.jpg" alt="Course Image">
+                    <div class="card-content">
+                        <h3>Machine Learning Basics</h3>
+                        <p>by Sophia L. White</p>
+                        <p class="info"><i class="fa fa-clock"></i> 9hr 10min &bull; 20 classes</p>
+                        <p class="price">Rs.899 <span>Rs.1799</span> <small>50% OFF</small></p>
+                        <a href="#" class="enroll">Enroll</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 8 -->
+            <div class="grid-item">
+                <div class="card">
+                    <img src="./course_img/img8.jpg" alt="Course Image">
+                    <div class="card-content">
+                        <h3>Advanced CSS & Design</h3>
+                        <p>by Michael T. Gray</p>
+                        <p class="info"><i class="fa fa-clock"></i> 6hr &bull; 12 classes</p>
+                        <p class="price">Rs.499 <span>Rs.999</span> <small>50% OFF</small></p>
+                        <a href="#" class="enroll">Enroll</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 9 -->
+            <div class="grid-item">
+                <div class="card">
+                    <img src="./course_img/img9.jpg" alt="Course Image">
+                    <div class="card-content">
+                        <h3>Node.js Mastery</h3>
+                        <p>by Thomas H. Lee</p>
+                        <p class="info"><i class="fa fa-clock"></i> 10hr &bull; 22 classes</p>
+                        <p class="price">Rs.1299 <span>Rs.2599</span> <small>50% OFF</small></p>
+                        <a href="#" class="enroll">Enroll</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 10 -->
+            <div class="grid-item">
+                <div class="card">
+                    <img src="./course_img/img10.jpg" alt="Course Image">
+                    <div class="card-content">
+                        <h3>AI & Deep Learning</h3>
+                        <p>by David G. Miles</p>
+                        <p class="info"><i class="fa fa-clock"></i> 20hr &bull; 40 classes</p>
+                        <p class="price">Rs.1999 <span>Rs.3999</span> <small>50% OFF</small></p>
+                        <a href="#" class="enroll">Enroll</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+	
+    </section>
+    <footer>
+		<div class="footer-container">
+			<div class="left-col">
+				<!-- <img src="images/icon/logo - Copy.png" style="width: 200px;"> -->
+				<h1 style="color: #fff; margin-bottom: 10px;">Vetri</h1>
+				<div class="logo"></div>
+				<div class="social-media">
+					<a href="#"><img src="images/icon\fb.png"></a>
+					<a href="#"><img src="images/icon\insta.png"></a>
+					<a href="#"><img src="images/icon\tt.png"></a>
+					<a href="#"><img src="images/icon\ytube.png"></a>
+					<a href="#"><img src="images/icon\linkedin.png"></a>
+				</div><br><br>
+				<p class="rights-text">Copyright © 2024 Created By XXX, xxx All Rights Reserved.</p>
+				<br><p><img src="images/icon/location.png"> Lovely Professional University<br>xxx, xxx-144401</p><br>
+				<p><img src="images/icon/phone.png"> +91-1234-567-890<br><img src="images/icon/mail.png">&nbsp; abc@gmail.com</p>
+			</div>
+			<div class="right-col">
+				<h1 style="color: #fff">Our Newsletter</h1>
+				<div class="border"></div><br>
+				<p>Enter Your Email to get our News and updates.</p>
+				<form class="newsletter-form">
+					<input class="txtb" type="email" placeholder="Enter Your Email">
+					<input class="btn" type="submit" value="Submit">
+				</form>
+			</div>
+		</div>
+	</footer>
+  <script>
+    function filterCourses() {
+  // Get the search input and convert it to lowercase
+  const searchInput = document.getElementById('search').value.toLowerCase();
+  
+  // Get all course cards
+  const cards = document.querySelectorAll('.grid-item');
+  
+  // Loop through all cards and filter
+  cards.forEach(card => {
+    const title = card.querySelector('.card-content h3').textContent.toLowerCase();
+    
+    // Check if the title contains the search input
+    if (title.includes(searchInput)) {
+      card.style.display = 'block'; // Show matching card
+    } else {
+      card.style.display = 'none'; // Hide non-matching card
+    }
+  });
+}
+
+  </script>
+</body>
+</html>

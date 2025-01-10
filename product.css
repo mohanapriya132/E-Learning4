@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+.course-container {
+    max-width: 80%;
+    margin: 30px auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding-bottom: 10px;
+  }
+  
+  .course-header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .course-title {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .course-info {
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+  .course-content {
+    padding: 20px;
+    line-height: 1.6;
+  }
+  
+  .course-rating {
+    font-weight: bold;
+  }
+  
+  .course-creator span {
+    color: #007bff;
+  }
+  
+  .course-updated, .course-language {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .pricing-section {
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .course-price {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .original-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1rem;
+    margin-left: 10px;
+  }
+  
+  .discount {
+    color: #e63946;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  
+  .time-left {
+    color: #e63946;
+    font-size: 0.9rem;
+    margin: 10px 0;
+  }
+  
+  .add-to-cart {
+    background-color: #DF2771;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .add-to-cart:hover {
+    background-color: #5a54d1;
+  }
+  /* Container Styles */
+.course-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Explore Course */
+.explore-course {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.explore-course h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.explore-course p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.download-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    background-color: #2ecc71;
+}
+
+/* Main Content */
+.main-content {
+    display: flex;
+    gap: 20px;
+}
+
+/* Syllabus */
+.syllabus {
+    flex: 1;
+}
+
+.syllabus h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.syllabus ul {
+    list-style: none;
+    padding: 0;
+}
+
+.topic-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    background-color: #f1f1f1;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    color: #333;
+}
+
+.topic-btn:hover {
+    background-color: #e2e2e2;
+}
+
+/* Video Section */
+.video-container {
+    flex: 2;
+    text-align: center;
+}
+
+.video-container h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#video-player {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+}
+

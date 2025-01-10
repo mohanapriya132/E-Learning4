@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Download</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 600px;
+            height: 300px;
+            margin: 20px 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Download Your Certificate</h1>
+    <img id="certificateImage" src="./images/courses/certificate.webp" alt="Certificate Image">
+    <br>
+    <button id="downloadPdfBtn">Download Certificate as PDF</button>
+
+    <script>
+        document.getElementById("downloadPdfBtn").addEventListener("click", async function () {
+            const { jsPDF } = window.jspdf;
+
+            // Create a new PDF instance
+            const pdf = new jsPDF();
+
+            // Select the certificate image
+            const imgElement = document.getElementById("certificateImage");
+            const imgWidth = 190; // PDF width in mm (A4 width is 210mm)
+            const imgHeight = (imgElement.height / imgElement.width) * imgWidth; // Maintain aspect ratio
+
+            try {
+                // Convert the image to Base64
+                const imgData = await convertImageToBase64(imgElement.src);
+
+                // Add the image to the PDF
+                pdf.addImage(imgData, "WEBP", 10, 10, imgWidth, imgHeight);
+
+                // Download the PDF
+                pdf.save("certificate.pdf");
+            } catch (error) {
+                alert("Error occurred while downloading the PDF: " + error.message);
+            }
+        });
+
+        // Convert an image to Base64
+        function convertImageToBase64(url) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.crossOrigin = "anonymous";
+                img.onload = () => {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(img, 0, 0);
+                    resolve(canvas.toDataURL("image/webp"));
+                };
+                img.onerror = () => reject(new Error("Failed to load image"));
+                img.src = url;
+            });
+        }
+    </script>
+</body>
+</html>

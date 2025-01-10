@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+/* body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    
+    background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.7)),url("./images/courses/payment.jpg");
+   
+    color: #333;
+} */
+
+.awesome-payment-page {
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+     background: #ffffff;
+    /* background-color: transparent; */
+    border-radius: 20px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1), -10px -10px 20px rgba(255, 255, 255, 0.8);
+}
+
+/* Success Message */
+.success-message {
+    display: none;
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(145deg, #e3ffe3, #caffca);
+    border: 2px solid #4caf50;
+    color: #388e3c;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+/* Header */
+.payment-header h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: #DF2771;
+}
+
+/* Cart Section */
+
+.cart-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f8f8; 
+   
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: transform 0.3s;
+}
+
+.cart-item:hover {
+    transform: scale(1.02);
+}
+
+.product-info h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+}
+
+/* Payment Section */
+.payment-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.payment-options {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.payment-btn {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background: #fafafa;
+    transition: transform 0.3s, background 0.3s, border-color 0.3s;
+}
+
+.payment-btn:hover {
+    background: #e0f7fa;
+    border-color: #26c6da;
+    transform: translateY(-5px);
+}
+
+.payment-btn i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.proceed-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    /* background: linear-gradient(to right, #ff6f61, #f44336); */ */
+    background-color: #DF2771;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.proceed-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 105, 97, 0.4);
+}
+
+/* Related Courses Section */
+.related-courses .course-card {
+    /* background: #fff;  */
+    background: linear-gradient(to right, #FA4B37, #DF2771); 
+    margin: 1rem;
+    padding: 2rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    border-color: #26c6da;
+}

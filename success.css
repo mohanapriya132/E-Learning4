@@ -1,0 +1,126 @@
+.course-container {
+    margin: 30px;
+  }
+  
+  .welcome-message {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .welcome-message h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .welcome-message p {
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .explore-course {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .download-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .download-btn:hover {
+    background-color: #45a049;
+  }
+  .main-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 20px;
+}
+
+/* Left: Syllabus Section */
+.syllabus {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.syllabus h2 {
+    margin-bottom: 20px;
+}
+
+.syllabus ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.syllabus li {
+    margin-bottom: 10px;
+}
+
+.topic-btn {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 5px;
+}
+
+.topic-btn:hover {
+    background-color: #45a049;
+}
+
+.completed {
+    background-color: #e7f5e7;
+}
+
+/* Right: Video Section */
+.video-container {
+    flex: 1;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+video {
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* Green Tick inside a green box on the left */
+.tick-box {
+    width: 25px;
+    height: 25px;
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    display: none;
+    text-align: center;
+    line-height: 25px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.topic-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+} 
+  

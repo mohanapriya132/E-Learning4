@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="login.js" defer></script>
+  <title>Home</title>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="./images/icon/logo-logo.png" alt="logo">
+      <p>Digital Academy</p>
+    </div>
+    <ul>
+      <li><a href="Course.html">Courses</a></li>
+      <li><a href="#services_section">Services</a></li>
+      <li><a href="#contactus_section">Contact</a></li>
+    </ul>
+    <div class="srch">
+      <input type="text" class="search" placeholder="Search here...">
+      <img src="./images/icon/search.png" alt="search" onclick="slide()">
+    </div>
+    <div id="login-container">
+      <!-- Login button or username -->
+      <button id="login-btn" onclick="navigateToLogin()">Login</button>
+      <span id="username" style="display: none;"></span>
+      <button id="logout-btn" style="display: none;" onclick="logout()">Logout</button>
+    </div>
+  </nav>
+  
+  <!-- Add your main content here -->
+  <script>
+    function navigateToLogin() {
+      window.location.href = "l.html";
+    }
+  </script>
+</body>
+</html>

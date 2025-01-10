@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- CSS Link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="success.css">
+    
+   
+ 
+  <style>
+    .explore-course {
+text-align: center;
+margin: 20px 0;
+}
+
+.explore-course h2 {
+font-size: 24px;
+color: #333;
+margin-bottom: 10px;
+}
+
+.explore-course p {
+font-size: 16px;
+color: #555;
+margin-bottom: 20px;
+}
+
+.download-btn {
+background-color: #DF2771;
+color: #fff;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+font-size: 16px;
+transition: background-color 0.3s;
+}
+
+.download-btn:hover {
+background-color: #b91e5d;
+}
+.main-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin: 20px;
+        }
+
+        /* Left: Syllabus Section */
+        .syllabus {
+            flex: 1;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .syllabus h2 {
+            margin-bottom: 20px;
+        }
+
+        .syllabus ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .syllabus li {
+            margin-bottom: 10px;
+        }
+
+        .topic-btn {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            border-radius: 5px;
+        }
+
+        .topic-btn:hover {
+            background-color: #45a049;
+        }
+
+        .completed {
+            background-color: #e7f5e7;
+        }
+
+        /* Right: Video Section */
+        .video-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        /* Green Tick inside a green box on the left */
+        .tick-box {
+            width: 25px;
+            height: 25px;
+            background-color: green;
+            color: white;
+            font-size: 20px;
+            display: none;
+            text-align: center;
+            line-height: 25px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .topic-content {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+</style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+	
+		 <nav>
+			<a href="index.html"><div class="logo"><img src="./images/icon/logo-logo.png" alt="logo">
+				<p style="margin-top: -13px; font-weight: bold; font-size: 10px;margin-left: 30px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Digital Academy</p>
+			</div></a>
+			<ul>
+				<!-- <li><a class="active" href="">Home</a></li> -->
+				<li><a href="Course.html">Courses</a></li>
+				
+				<li><a href="index.html">Services</a></li>
+				<li><a href="index.html">Contact</a></li>
+			</ul>
+			<div class="srch"><input type="text" class="search" placeholder="Search here..."><img src="images/icon/search.png" alt="search" onclick=slide()></div>
+			<a class="get-started" href="login.html">Login</a>
+			<img src="images/icon/menu.png" class="menu" onclick="sideMenu(0)" alt="menu">
+		</nav> 
+
+       
+        <div class="course-container" style="margin-top: 8rem;">
+            <!-- Welcome Message Section -->
+            <div class="welcome-message">
+              <h2 style="color: green;">Welcome to Vetri Digital Academy</h2>
+              <p style="font-weight: bold; margin-top: 5px;">
+                We're thrilled to have you with us! Our courses are designed to provide you with the best learning experience.
+                Dive into the world of knowledge and skill-building.
+              </p>
+            </div>
+          
+            <!-- Explore Course Section -->
+            <div class="explore-course">
+              <h2>Explore the Course</h2>
+              <p>
+                Get full access to the course materials, video lessons, and quizzes to enhance your learning experience.
+              </p>
+              <!-- <button class="download-btn" onclick="downloadSyllabus()">Download Syllabus</button> -->
+            </div>
+          </div>
+          
+    
+
+        <div class="main-content" style="margin-top: 5rem;">
+            <!-- Left: Syllabus Topics -->
+            <div class="syllabus">
+                <h2>Syllabus</h2>
+                <ul>
+                    <li>
+                        <h3>Topic 1: Python Basics</h3>
+                        <ul>
+                            <li class="topic-content">
+                                <div id="tick-box-1" class="tick-box">&#10004;</div>
+                                <button class="topic-btn" id="topic-1" onclick="showVideo(1)">Overview of Python</button>
+                            </li>
+                            <li class="topic-content">
+                                <div id="tick-box-2" class="tick-box">&#10004;</div>
+                                <button class="topic-btn" id="topic-2" onclick="showVideo(1)">Setting up the development environment</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Topic 2: Functions in Python</h3>
+                        <ul>
+                            <li class="topic-content">
+                                <div id="tick-box-3" class="tick-box">&#10004;</div>
+                                <button class="topic-btn" id="topic-3" onclick="showVideo(2)">Understanding Functions</button>
+                            </li>
+                            <li class="topic-content">
+                                <div id="tick-box-4" class="tick-box">&#10004;</div>
+                                <button class="topic-btn" id="topic-4" onclick="showVideo(2)">Function Arguments</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Topic 3: Loops in Python</h3>
+                        <ul>
+                            <li class="topic-content">
+                                <div id="tick-box-5" class="tick-box">&#10004;</div>
+                                <button class="topic-btn" id="topic-5" onclick="showVideo(3)">For Loops in Python</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Topic 4: Conditionals in Python</h3>
+                        <ul>
+                            <li class="topic-content">
+                                <div id="tick-box-6" class="tick-box">&#10004;</div>
+                                <button class="topic-btn" id="topic-6" onclick="showVideo(4)">If Statements in Python</button>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Topic 5: Python Libraries</h3>
+                        <ul>
+                            <li class="topic-content">
+                                <div id="tick-box-7" class="tick-box">&#10004;</div>
+                                <button class="topic-btn" id="topic-7" onclick="showVideo(5)">Introduction to NumPy</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+    
+            <!-- Right: Video Section -->
+            <div class="video-container">
+                <h2>Python Bootcamp</h2>
+                <video id="video-player" controls>
+                    <source id="video-source" src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+        
+        
+        <footer>
+            <div class="footer-container">
+                <div class="left-col">
+                    <!-- <img src="images/icon/logo - Copy.png" style="width: 200px;"> -->
+                    <h1 style="color: #fff; margin-bottom: 10px;">Vetri</h1>
+                    <div class="logo"></div>
+                    <div class="social-media">
+                        <a href="#"><img src="images/icon\fb.png"></a>
+                        <a href="#"><img src="images/icon\insta.png"></a>
+                        <a href="#"><img src="images/icon\tt.png"></a>
+                        <a href="#"><img src="images/icon\ytube.png"></a>
+                        <a href="#"><img src="images/icon\linkedin.png"></a>
+                    </div><br><br>
+                    <p class="rights-text">Copyright © 2024 Created By xxx, xxx All Rights Reserved.</p>
+                    <br><p><img src="images/icon/location.png"> Lovely Professional University<br>xxx, xxx-144401</p><br>
+                    <p><img src="images/icon/phone.png"> +91-1234-567-890<br><img src="images/icon/mail.png">&nbsp; abc@gmail.com</p>
+                </div>
+                <div class="right-col">
+                    <h1 style="color: #fff">Our Newsletter</h1>
+                    <div class="border"></div><br>
+                    <p>Enter Your Email to get our News and updates.</p>
+                    <form class="newsletter-form">
+                        <input class="txtb" type="email" placeholder="Enter Your Email">
+                        <input class="btn" type="submit" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </footer>
+     
+        <script>
+            function showVideo(videoIndex) {
+                const videoPlayer = document.getElementById("video-player");
+                const videoSource = document.getElementById("video-source");
+                const videoButton = document.getElementById(`topic-${videoIndex}`);
+                const tickBox = document.getElementById(`tick-box-${videoIndex}`);
+    
+                let videoPath = '';
+    
+                // Set the video source based on the index
+                if (videoIndex === 1 || videoIndex === 3 || videoIndex === 5) {
+                    videoPath = "./videos/video1.mp4";  // Path for the first video
+                } else if (videoIndex === 2 || videoIndex === 4 || videoIndex === 6 || videoIndex === 7) {
+                    videoPath = "./videos/video2.mp4";  // Path for the second video
+                }
+    
+                // Update video source and play it
+                videoSource.src = videoPath;
+                videoPlayer.load();
+                videoPlayer.play();
+    
+                // Change background color when clicked
+                videoButton.classList.add("completed");
+    
+                // When video ends, mark it as completed and show the green checkmark for the specific topic
+                videoPlayer.onended = function() {
+                    tickBox.style.display = "inline";  // Show the checkmark inside the green box
+                };
+            }
+        </script>
+        </body>
+        </html>

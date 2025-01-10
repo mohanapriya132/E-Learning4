@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Enrollment - Backend Python</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet"  href="success.css">
+    <link rel="stylesheet"  href="style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .enrollment-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin: 30px;
+        }
+
+        /* Left: Syllabus Section */
+        .syllabus-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .syllabus-container h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .syllabus-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .syllabus-container li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .topic-btn {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0;
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .topic-btn:hover {
+            background-color: #005f6a;
+        }
+
+        .completed .topic-btn {
+            background-color: #8BC34A;
+        }
+
+        .topic-description {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .completed-icon {
+            display: none;
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+            line-height: 20px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+
+        .subtitle-btn {
+            background-color: transparent;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            color: #333;
+            text-align: left;
+        }
+
+        /* Right: Video Section */
+        .video-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        video {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        /* Progress Bar */
+        .progress-wrapper {
+            width: 100%;
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            height: 15px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #4CAF50;
+            border-radius: 8px;
+        }
+
+        /* Progress Percentage */
+        .progress-text {
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Certificate Download Button */
+        #download-button {
+            display: none;
+            padding: 10px 20px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            width: 100%;
+            text-align: center;
+        }
+
+        #download-button:hover {
+            background-color: #fb8c00;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html"><div class="logo"><img src="./images/icon/logo-logo.png" alt="logo">
+            <p style="margin-top: -13px; font-weight: bold; font-size: 10px;margin-left: 30px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Digital Academy</p>
+        </div></a>
+        <ul>
+            <!-- <li><a class="active" href="">Home</a></li> -->
+            <li><a href="Course.html">Courses</a></li>
+            
+            <li><a href="index.html">Services</a></li>
+            <li><a href="index.html">Contact</a></li>
+        </ul>
+        <div class="srch"><input type="text" class="search" placeholder="Search here..."><img src="images/icon/search.png" alt="search" onclick=slide()></div>
+        <a class="get-started" href="login.html">Login</a>
+        <img src="images/icon/menu.png" class="menu" onclick="sideMenu(0)" alt="menu">
+    </nav> 
+
+    <div class="course-container" style="margin-top: 8rem;">
+        <!-- Welcome Message Section -->
+        <div class="welcome-message">
+          <h2 style="color: green;">Welcome to Vetri Digital Academy</h2>
+          <p style="font-weight: bold; margin-top: 5px;">
+            We're thrilled to have you with us! Our courses are designed to provide you with the best learning experience.
+            Dive into the world of knowledge and skill-building.
+          </p>
+        </div>
+      
+        <!-- Explore Course Section -->
+        <div class="explore-course">
+          <h2>Explore the Course</h2>
+          <p>
+            Get full access to the course materials, video lessons, and quizzes to enhance your learning experience.
+          </p>
+          <!-- <button class="download-btn" onclick="downloadSyllabus()">Download Syllabus</button> -->
+        </div>
+      </div>
+
+    <div class="enrollment-container">
+        <!-- Left: Syllabus Topics -->
+        <div class="syllabus-container">
+            <h2>Course Syllabus</h2>
+            <ul>
+                <!-- Topic 1 -->
+                <li>
+                    <div class="topic-description">
+                        <button class="topic-btn" id="topic-1"><i class="fas fa-video"></i> Overview of Python</button>
+                    </div>
+                    <ul>
+                        <li>
+                            <button class="subtitle-btn" id="sub-1" onclick="showVideo(1)">Setting up Python Environment</button>
+                            <div id="completed-icon-1" class="completed-icon"><i class="fas fa-check"></i></div>
+                        </li>
+                        <li>
+                            <button class="subtitle-btn" id="sub-2" onclick="showVideo(2)">Basic Syntax and Variables</button>
+                            <div id="completed-icon-2" class="completed-icon"><i class="fas fa-check"></i></div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Topic 2 -->
+                <li>
+                    <div class="topic-description">
+                        <button class="topic-btn" id="topic-2"><i class="fas fa-video"></i> Understanding Functions</button>
+                    </div>
+                    <ul>
+                        <li>
+                            <button class="subtitle-btn" id="sub-3" onclick="showVideo(3)">Defining Functions</button>
+                            <div id="completed-icon-3" class="completed-icon"><i class="fas fa-check"></i></div>
+                        </li>
+                        <li>
+                            <button class="subtitle-btn" id="sub-4" onclick="showVideo(4)">Function Parameters and Return</button>
+                            <div id="completed-icon-4" class="completed-icon"><i class="fas fa-check"></i></div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Topic 3 -->
+                <li>
+                    <div class="topic-description">
+                        <button class="topic-btn" id="topic-3"><i class="fas fa-video"></i> Loops in Python</button>
+                    </div>
+                    <ul>
+                        <li>
+                            <button class="subtitle-btn" id="sub-5" onclick="showVideo(5)">For Loops</button>
+                            <div id="completed-icon-5" class="completed-icon"><i class="fas fa-check"></i></div>
+                        </li>
+                        <li>
+                            <button class="subtitle-btn" id="sub-6" onclick="showVideo(6)">While Loops</button>
+                            <div id="completed-icon-6" class="completed-icon"><i class="fas fa-check"></i></div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Topic 4 -->
+                <li>
+                    <div class="topic-description">
+                        <button class="topic-btn" id="topic-4"><i class="fas fa-video"></i> Conditionals in Python</button>
+                    </div>
+                    <ul>
+                        <li>
+                            <button class="subtitle-btn" id="sub-7" onclick="showVideo(7)">If-Else Statements</button>
+                            <div id="completed-icon-7" class="completed-icon"><i class="fas fa-check"></i></div>
+                        </li>
+                        <li>
+                            <button class="subtitle-btn" id="sub-8" onclick="showVideo(8)">Nested Conditionals</button>
+                            <div id="completed-icon-8" class="completed-icon"><i class="fas fa-check"></i></div>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Topic 5 -->
+                <li>
+                    <div class="topic-description">
+                        <button class="topic-btn" id="topic-5"><i class="fas fa-video"></i> Introduction to NumPy</button>
+                    </div>
+                    <ul>
+                        <li>
+                            <button class="subtitle-btn" id="sub-9" onclick="showVideo(9)">Creating NumPy Arrays</button>
+                            <div id="completed-icon-9" class="completed-icon"><i class="fas fa-check"></i></div>
+                        </li>
+                        <li>
+                            <button class="subtitle-btn" id="sub-10" onclick="showVideo(10)">Array Operations</button>
+                            <div id="completed-icon-10" class="completed-icon"><i class="fas fa-check"></i></div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Right: Video Section -->
+        <div class="video-container">
+            <h2>Demo Videos</h2>
+            <video id="video-player" controls>
+                <source id="video-source" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+
+            <!-- Progress Bar -->
+            <div class="progress-wrapper">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <div class="progress-text" id="progress-percentage">Progress: 0%</div>
+
+            <!-- Download Button -->
+            <button id="download-button" onclick="goToCertificatePage()">Download Certificate</button>
+        </div>
+    </div>
+
+    
+    <footer>
+        <div class="footer-container">
+            <div class="left-col">
+                <!-- <img src="images/icon/logo - Copy.png" style="width: 200px;"> -->
+                <h1 style="color: #fff; margin-bottom: 10px;">Vetri</h1>
+                <div class="logo"></div>
+                <div class="social-media">
+                    <a href="#"><img src="images/icon\fb.png"></a>
+                    <a href="#"><img src="images/icon\insta.png"></a>
+                    <a href="#"><img src="images/icon\tt.png"></a>
+                    <a href="#"><img src="images/icon\ytube.png"></a>
+                    <a href="#"><img src="images/icon\linkedin.png"></a>
+                </div><br><br>
+                <p class="rights-text">Copyright © 2024 Created By xxx, xxx All Rights Reserved.</p>
+                <br><p><img src="images/icon/location.png"> Lovely Professional University<br>xxx, xxx-144401</p><br>
+                <p><img src="images/icon/phone.png"> +91-1234-567-890<br><img src="images/icon/mail.png">&nbsp; abc@gmail.com</p>
+            </div>
+            <div class="right-col">
+                <h1 style="color: #fff">Our Newsletter</h1>
+                <div class="border"></div><br>
+                <p>Enter Your Email to get our News and updates.</p>
+                <form class="newsletter-form">
+                    <input class="txtb" type="email" placeholder="Enter Your Email">
+                    <input class="btn" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let completedVideos = 0;
+        const totalVideos = 10;
+        const progressBar = document.getElementById('progress-bar');
+        const progressPercentage = document.getElementById('progress-percentage');
+        const downloadBtn = document.getElementById('download-button');
+
+        // Array for video paths
+        const videoPaths = [
+            'videos/video1.mp4', 
+            'videos/video2.mp4', 
+            'videos/video1.mp4', 
+            'videos/video2.mp4', 
+            'videos/video1.mp4',
+            'videos/video2.mp4',
+            'videos/video1.mp4',
+            'videos/video2.mp4',
+            'videos/video1.mp4',
+            'videos/video2.mp4'
+        ];
+
+        function showVideo(subTitleIndex) {
+            const videoPlayer = document.getElementById('video-player');
+            const videoSource = document.getElementById('video-source');
+            const tickIcon = document.getElementById(`completed-icon-${subTitleIndex}`);
+
+            // Set video source based on clicked subtitle
+            videoSource.src = videoPaths[subTitleIndex - 1];
+            videoPlayer.load();
+            videoPlayer.play();
+
+            // Show tick icon when video is completed
+            videoPlayer.onended = function() {
+                tickIcon.style.display = 'inline-block';
+                updateProgress();
+            };
+        }
+
+        function updateProgress() {
+            completedVideos++;
+            let progress = Math.floor((completedVideos / totalVideos) * 100);
+            progressBar.style.width = progress + '%';
+            progressPercentage.textContent = 'Progress: ' + progress + '%';
+            if (completedVideos === totalVideos) {
+                downloadBtn.style.display = 'block';
+            }
+        }
+
+        function goToCertificatePage() {
+            window.location.href = 'certificate.html'; // Redirect to certificate page
+        }
+    </script>
+</body>
+</html>
